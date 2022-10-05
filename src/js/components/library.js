@@ -16,6 +16,7 @@ const refs = {
   input: document.querySelector('.search__input'),
   spinner: document.querySelector('.spinner'),
 };
+
 async function onHome() {
   refs.header.classList.remove('library');
   refs.search.classList.remove('visually-hidden');
@@ -29,6 +30,7 @@ async function onHome() {
   refs.queueBtn.classList.remove('is-active');
   refs.watchedBtn.classList.remove('is-active');
 }
+
 async function onLibrary() {
   refs.watchedBtn.classList.add('is-active');
   refs.header.classList.add('library');
@@ -37,14 +39,18 @@ async function onLibrary() {
   refs.home.classList.remove('current');
   refs.library.classList.add('current');
   refs.input.value = '';
+
   api.resetPage();
   onWatchedBtn();
 }
+
 async function onWatchedBtn() {
   refs.spinner.classList.remove('visually-hidden');
   refs.watchedBtn.classList.add('is-active');
   refs.queueBtn.classList.remove('is-active');
+
   api.resetPage();
+
   const watchedMovies = storage.get('watched') || [];
   const totalPages = Math.ceil(watchedMovies.length / 20);
   storage.save('totalPages', totalPages);
@@ -52,6 +58,7 @@ async function onWatchedBtn() {
   renderPagination();
   refs.spinner.classList.add('visually-hidden');
 }
+
 async function onQueueBtn() {
   refs.spinner.classList.remove('visually-hidden');
   refs.watchedBtn.classList.remove('is-active');

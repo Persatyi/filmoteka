@@ -17,7 +17,7 @@ class ApiService {
   // вызывайте этот метод, чтобы реализовать подгрузку популярных фильмов на главную  страницу (Вадим)
   async fetchTrendingMovies() {
     const response = await axios.get(
-      `/trending/movies/day?api_key=${this.#API_KEY}&page=${this.page}`,
+      `/trending/movie/day?api_key=${this.#API_KEY}&page=${this.page}`,
     );
     return response.data;
   }

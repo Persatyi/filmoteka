@@ -440,10 +440,6 @@ function renderPagination() {
   listFirstPage = 1;
   totalPages = storage.get('totalPages');
 
-  if (totalPages > 500) {
-    totalPages = 500;
-  }
-
   if (totalPages <= 1) {
     hideButtons();
     refs.listPagination.innerHTML = '';
